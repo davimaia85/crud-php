@@ -41,5 +41,6 @@ function editar() : void
 {
     $id = $_GET["id"];
     $aluno = buscarUmAlunos($id);
+    atualizarAluno();
     include '../src/views/editar.phtml';
 }

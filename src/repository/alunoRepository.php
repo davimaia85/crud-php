@@ -28,6 +28,23 @@ function novoAluno() : void
      }
    
 }  
+function atualizarAluno() : void
+{ 
+     if (false === empty($_POST)){
+         $id= $_POST['id'];
+         $nome = $_POST['nome'];
+         $matricula = $_POST['matricula'];
+         $cidade = $_POST['matricula']; 
+         $sql = "INSERT INTO tb_alunos SET nome = ?, matricula = ?, cidade = ? WHERE id = ?";
+         $query = abrirConexao()->prepare($sql);
+         $query->execute([$nome, $matricula, $cidade, $id]);
+         header('location: /listar');
+     }
+   
+}  
+
+ 
+ 
 
 function excluirAluno(string $id): void
 {
