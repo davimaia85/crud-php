@@ -12,31 +12,34 @@ declare(strict_types=1); //difinindo que o arquivo trabalha os tipos de dados
 //     return "ebm vindo {$nome}";
 // }
 
-
-
 function inicio() : void //void = funcao sem retorno
 {
     include '../src/views/inicio.phtml';
 }
 
+function excluir(){
+    $id = $_GET['id'];
+    excluirAluno($id);
+    header('location: /listar');
+}
+
 function listar() : void
 {
-    $select = abrirConexao()->query("SELECT * FROM tb_bebidas");
+    $alunos = buscarAlunos();
+    $select = abrirConexao()->query("SELECT * FROM tb_alunos");
     include '../src/views/listar.phtml';
 }
 
 function novo() : void
-{   
-    if (false === empty($_POST)){
-        $nome = $_POST['nome'];
-        $quantidade = $_POST['quantidade'];
-        $select = "INSERT INTO tb_bebidas (nome, quantidade) VALUES '{$nome}', '{$quantidade}';
-        $query = abrirConexao()->prepare($select);
-        $query->execute;
-    }
-    include '../src/views/novo.phtml';
-}
+{ 
+    include '../src/views/novo.phtml'; 
+    novoAluno();
+   
+}  
+    
 function editar() : void
 {
+    $id = $_GET["id"];
+    $aluno = buscarUmAlunos($id);
     include '../src/views/editar.phtml';
 }

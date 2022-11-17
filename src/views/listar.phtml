@@ -1,3 +1,38 @@
 <h1>Pagina de Listar</h1>
 
 <hr>
+
+<table class="container table table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <td>ID</td>
+            <td>Nome</td>
+            <td>Matricula</td>
+            <td>Cidade</td>
+            <td>Ações</td>
+        </tr>
+    </thead>
+
+    <tbody>
+    <?php
+    foreach ($alunos as $row){
+        $id = $row['id'];
+        echo "<tr>
+        <td>{$row['id']}</td>
+        <td>{$row['nome']}</td>
+        <td>{$row['matricula']}</td>
+        <td>{$row['cidade']}</td>
+        <td>
+            <a href='/editar?id={$id}' class ='btn btn-outline-warning'>EDITAR</a>
+            <a href='/excluir?id={$id}' class ='btn btn-outline-danger'>EXCLUIR</a>
+        </td>
+        </tr>";
+    }
+     ?>   
+
+    </tbody>
+   
+</table>
+
+
+    
