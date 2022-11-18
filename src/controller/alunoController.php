@@ -2,33 +2,39 @@
 
 declare(strict_types=1); //difinindo que o arquivo trabalha os tipos de dados
 
-function rederizar(string $nomeDoArquivo, mixed $dados = null){
+function renderizar(string $nomeDoArquivo, mixed $dados = null){
+    include '../src/views/head.phtml';
     include "../src/views/{$nomeDoArquivo}.phtml";
     $dados;
+    include '../src/views/foot.phtml';
 
+}
+
+function redirecionar(string $onde){
+    header("location: {$onde}");
 }
 
 function inicio() : void //void = funcao sem retorno
 {
-    rederizar("inicio");
+    renderizar("inicio");
 }
 
 function excluir(){
     $id = $_GET['id'];
     excluirAluno($id);
-    header('location: /listar');
+    
 }
 
 function listar() : void
 {
     $alunos = buscarAlunos();
     
-    rederizar("listar", $alunos);
+    renderizar("listar", $alunos);
 }
 
 function novo() : void
 { 
-    rederizar("novo"); 
+    renderizar("novo"); 
     if (false === empty($_POST)){
         $nome = trim($_POST['nome']);
         $cidade = trim($_POST['cidade']);
@@ -36,7 +42,7 @@ function novo() : void
 
         if(true === validateForm($nome, $cidade, $matricula)){
             novoAluno($nome, $cidade, $matricula);
-            header('location: /listar');
+            redirecionar('/listar');
         }
     }
 }  
@@ -45,7 +51,7 @@ function editar() : void
 {
     $id = $_GET["id"];
     $aluno = buscarUmAlunos($id);
-    rederizar("editar");
+    renderizar("editar");
     if (false === empty($_POST)){
         $nome = trim($_POST['nome']);
         $cidade = trim($_POST['cidade']);
@@ -53,7 +59,7 @@ function editar() : void
 
         if(true === validateForm($nome, $cidade, $matricula)){
             atualizarAluno($nome, $cidade, $matricula, $id);
-            header('location: /listar');
+            redirecionar('/listar');
         }
     }
    
