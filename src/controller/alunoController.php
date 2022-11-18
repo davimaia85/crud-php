@@ -2,19 +2,15 @@
 
 declare(strict_types=1); //difinindo que o arquivo trabalha os tipos de dados
 
-//FORMATAR FUNCAO COM DADOS TIPADOS
-// function soma(float $n1, float $n2): float
-// {
-//     return $n1 + $n2;
-// }
-// function welcome(string $nome): string
-// {
-//     return "ebm vindo {$nome}";
-// }
+function rederizar(string $nomeDoArquivo, mixed $dados = null){
+    include "../src/views/{$nomeDoArquivo}.phtml";
+    $dados;
+
+}
 
 function inicio() : void //void = funcao sem retorno
 {
-    include '../src/views/inicio.phtml';
+    rederizar("inicio");
 }
 
 function excluir(){
@@ -27,12 +23,12 @@ function listar() : void
 {
     $alunos = buscarAlunos();
     
-    include '../src/views/listar.phtml';
+    rederizar("listar", $alunos);
 }
 
 function novo() : void
 { 
-    include '../src/views/novo.phtml'; 
+    rederizar("novo"); 
     if (false === empty($_POST)){
         $nome = trim($_POST['nome']);
         $cidade = trim($_POST['cidade']);
@@ -49,7 +45,7 @@ function editar() : void
 {
     $id = $_GET["id"];
     $aluno = buscarUmAlunos($id);
-    include '../src/views/editar.phtml';
+    rederizar("editar");
     if (false === empty($_POST)){
         $nome = trim($_POST['nome']);
         $cidade = trim($_POST['cidade']);

@@ -4,10 +4,10 @@
 
 <form action="#" method="POST">
     <label>Nome</label>
-    <input type="hidden" name="id" value="<?php echo $aluno['id'];?>">
+    <input type="hidden" name="id" value="<?php echo $_POST["nome"] ?? $aluno['id'];?>">
     <label>Matricula</label>
-    <input type="text" name="matricula" value="<?php echo $aluno['matricula'];?>">
+    <input type="text" name="matricula" value="<?php echo $_POST["matricula"] ?? $aluno['matricula'];?>">
     <label>Cidade</label>
-    <input type="text" name="cidade" value="<?php echo $aluno['cidade'];?>">
+    <input type="text" name="cidade" value="<?php echo $_POST["cidade"] ?? $aluno['cidade'];?>">
     <button type="submit">Criar</button>
 </form>
