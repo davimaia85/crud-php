@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 function buscarAlunos(): iterable
 {
-    $sql = "SELECT * FROM tb_alunos";
+    $sql = 'SELECT * FROM tb_alunos';
     $alunos = abrirConexao()->query($sql);
     return $alunos;
 }
@@ -15,17 +15,13 @@ function buscarUmAlunos($id): iterable
     return $aluno -> fetch(PDO::FETCH_ASSOC);
 }
 
-function novoAluno() : void
-{ 
-     if (false === empty($_POST)){
-         $nome = $_POST['nome'];
-         $matricula = $_POST['matricula'];
-         $cidade = $_POST['matricula']; 
+function novoAluno(string $nome, string $cidade, string $matricula): void
+{     
          $sql = "INSERT INTO tb_alunos (nome, matricula, cidade) VALUES (?,?,?)";
          $query = abrirConexao()->prepare($sql);
          $query->execute([$nome, $matricula, $cidade]);
-         header('location: /listar');
-     }
+        
+    
    
 }  
 function atualizarAluno() : void

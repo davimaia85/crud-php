@@ -26,21 +26,39 @@ function excluir(){
 function listar() : void
 {
     $alunos = buscarAlunos();
-    $select = abrirConexao()->query("SELECT * FROM tb_alunos");
+    
     include '../src/views/listar.phtml';
 }
 
 function novo() : void
 { 
     include '../src/views/novo.phtml'; 
-    novoAluno();
-   
+    if (false === empty($_POST)){
+        $nome = trim($_POST['nome']);
+        $cidade = trim($_POST['cidade']);
+        $matricula = trim($_POST['matricula']);
+
+        if(true === validateForm($nome, $cidade, $matricula)){
+            novoAluno($nome, $cidade, $matricula);
+            header('location: /listar');
+        }
+    }
 }  
     
 function editar() : void
 {
     $id = $_GET["id"];
     $aluno = buscarUmAlunos($id);
-    atualizarAluno();
     include '../src/views/editar.phtml';
+    if (false === empty($_POST)){
+        $nome = trim($_POST['nome']);
+        $cidade = trim($_POST['cidade']);
+        $matricula = trim($_POST['matricula']);
+
+        if(true === validateForm($nome, $cidade, $matricula)){
+            atualizarAluno($nome, $cidade, $matricula, $id);
+            header('location: /listar');
+        }
+    }
+   
 }

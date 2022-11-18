@@ -6,6 +6,7 @@ $rota = $rota[0];
 require_once '../src/controller/alunoController.php'; //require_once evita que o arquivo seja duplicado
 require_once '../src/connection/conexao.php';
 require_once '../src/repository/alunoRepository.php';
+require_once '../src/validator/alunoValidator.php';
 $paginas = [
     '/' => 'inicio',
     '/listar' => 'listar',

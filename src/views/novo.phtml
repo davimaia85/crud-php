@@ -4,10 +4,10 @@
 
 <form action="#" method="POST">
     <label>Nome</label>
-    <input type="text" name="nome">
+    <input required value="<?php echo $_POST['nome'] ?? ''?>" type="text" name="nome">
     <label>Matricula</label>
-    <input type="text" name="matricula">
+    <input required value="<?php echo $_POST['nome'] ?? ''?>" type="text" name="matricula">
     <label>Cidade</label>
-    <input type="text" name="cidade">
+    <input required value="<?php echo $_POST['nome'] ?? ''?>" type="text" name="cidade">
     <button type="submit">Criar</button>
 </form>
