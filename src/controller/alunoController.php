@@ -22,13 +22,12 @@ function inicio() : void //void = funcao sem retorno
 function excluir(){
     $id = $_GET['id'];
     excluirAluno($id);
-    
+    redirecionar('/listar');   
 }
 
 function listar() : void
 {
     $alunos = buscarAlunos();
-    
     renderizar("listar", $alunos);
 }
 
@@ -51,7 +50,7 @@ function editar() : void
 {
     $id = $_GET["id"];
     $aluno = buscarUmAlunos($id);
-    renderizar("editar");
+    renderizar("editar", $aluno);
     if (false === empty($_POST)){
         $nome = trim($_POST['nome']);
         $cidade = trim($_POST['cidade']);

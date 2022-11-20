@@ -3,12 +3,12 @@
 <hr>
 
 <form action="#" method="POST">
-    <input type="hidden" name="id" value="<?php echo $dados["id"];?>">
+    <input type="hidden" name="id" value="<?php echo $_POST["id"] ?? $dados["id"];?>">
     <label>Nome</label>
     <input type="hidden" name="id" value="<?php echo $_POST["nome"] ?? $dados["nome"];?>">
     <label>Matricula</label>
     <input type="text" name="matricula" value="<?php echo $_POST["matricula"] ?? $dados["matricula"];?>">
     <label>Cidade</label>
     <input type="text" name="cidade" value="<?php echo $_POST["cidade"] ?? $dados["cidade"];?>">
-    <button type="submit">EDITAR</button>
+    <button type="submit" value="editar">EDITAR</button>
 </form>

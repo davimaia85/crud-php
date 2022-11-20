@@ -28,7 +28,8 @@ function atualizarAluno(string $nome, string $cidade, string $matricula, string 
 { 
          $sql = "INSERT INTO tb_alunos SET nome = ?, matricula = ?, cidade = ? WHERE id = ?";
          $query = abrirConexao()->prepare($sql);
-         $query->execute([$nome, $matricula, $cidade, $id]);
+         $query->execute([$id, $nome, $matricula, $cidade]);
+         header('location: /listar');
 }  
 
  

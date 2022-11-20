@@ -15,8 +15,6 @@ $paginas = [
     '/excluir'=> 'excluir',
 ];
 
-include '../src/views/menu.phtml';
-
 if (false === isset($paginas[$rota])){
     include '..src/views/erro404.phtml';
     exit;
